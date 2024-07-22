@@ -12,4 +12,4 @@ DA PLATAFORMA
 
 CRIADO , DESENVOLVIDO POR ARLEI JUNIO
 
-![image](https://github.com/user-attachments/assets/d4dd66fc-6b15-4f3b-8667-0a06ec10ee42)
+
