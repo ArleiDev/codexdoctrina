@@ -5,23 +5,31 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Register from './components/Register';
+import VideoAula from './components/VideoAula';
 
 const App = () => {
   return (
     <Router>
       <Routes>
-       <Route path="/" element={<Login/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/video-aula/:videoId"
+          element={
+            <ProtectedRoute>
+              <VideoAula />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <Dashboard/>
+              <Dashboard />
             </ProtectedRoute>
           }
         />
-      
       </Routes>
     </Router>
   );

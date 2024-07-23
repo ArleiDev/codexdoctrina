@@ -1,6 +1,5 @@
-// src/components/Sidebar.js
-import React from 'react';
-import { FaHome, FaCode, FaServer, FaCloud, FaSignOutAlt  } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaHome, FaCode, FaServer, FaCloud, FaSignOutAlt, FaBars, FaArrowLeft } from 'react-icons/fa';
 import { BsServer } from "react-icons/bs";
 import { auth } from '../services/firebaseConfig';
 
@@ -12,32 +11,51 @@ const handleLogout = async () => {
       console.error('Erro ao deslogar:', error);
     }
   };
+
 const Sidebar = () => {
+  const [isExpanded, setIsExpanded] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <div className="w-64 h-screen bg-orange-900 text-white flex flex-col">
+    <div className={`h-screen bg-orange-900 text-white flex flex-col transition-width duration-300 ${isExpanded ? 'w-64' : 'w-16 items-center '}`}>
       {/* Logo */}
-      <div className="p-4 flex items-center justify-center bg-orange-800">
-       <img className='rounded-full p-5' src="https://i.postimg.cc/RFhxJHhh/CODEX-DOCTRINA.png" alt="logo" />
+      <div className={`p-4 flex items-center justify-center bg-orange-800 transition-all duration-300 ${isExpanded ? 'h-24' : 'h-16 items-center'}`}>
+        {isExpanded ? (
+          <img className="rounded-full p-2 w-26 h-100" src="https://i.postimg.cc/RFhxJHhh/CODEX-DOCTRINA.png" alt="logo" />
+        ) : (
+          <img className="rounded-full w-8 h-8 object-cover " src="https://i.postimg.cc/hjhv2xNk/CODEX-DOCTRINA-2.png" alt="logo minimizada" />
+        )}
       </div>
 
+      {/* Toggle Button */}
+      <button 
+        onClick={toggleSidebar} 
+        className="p-4 border-orange-700 border-2 rounded-xl mt-10 "
+      >
+        {isExpanded ? <FaArrowLeft /> : <FaBars />}
+      </button>
+
       {/* Menu Items */}
-      <nav className="flex-1 mt-6">
+      <nav className="flex-1 mt-6 ">
         <ul>
           <li className="flex items-center p-4 hover:bg-orange-700 cursor-pointer">
             <FaHome className="mr-3" />
-            <span>Front End</span>
+            {isExpanded && <span>Front End</span>}
           </li>
           <li className="flex items-center p-4 hover:bg-orange-700 cursor-pointer">
             <BsServer className="mr-3" />
-            <span>Back End</span>
+            {isExpanded && <span>Back End</span>}
           </li>
           <li className="flex items-center p-4 hover:bg-orange-700 cursor-pointer">
             <FaServer className="mr-3" />
-            <span>DevOps</span>
+            {isExpanded && <span>DevOps</span>}
           </li>
           <li className="flex items-center p-4 hover:bg-orange-700 cursor-pointer">
             <FaCloud className="mr-3" />
-            <span>Cloud Computing</span>
+            {isExpanded && <span>Cloud Computing</span>}
           </li>
         </ul>
       </nav>
@@ -49,7 +67,7 @@ const Sidebar = () => {
         onClick={handleLogout}
         className="flex items-center w-full text-left">
           <FaSignOutAlt className="mr-3" />
-          <span>Logout</span>
+          {isExpanded && <span>Logout</span>}
         </button>
       </div>
     </div>
