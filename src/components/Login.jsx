@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {} from '../services/firebaseConfig'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -20,7 +21,7 @@ function Login() {
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      navigate("/dashboard",{replace:true})      
+      navigate("/home",{replace:true})      
     }).catch((error) => {
       alert('Erro: Por favor verifique as Credenciais e Tente novamente!')
     })
@@ -100,7 +101,7 @@ function Login() {
             >
               Entrar
             </button>
-            <h1>{setmensagem}</h1>
+            <Link to={'/Register'}><h1 className='text-orange-500 py-3'>Não esta Registrado? Clique aqui</h1></Link>
           </form>
         </div>
       </div>

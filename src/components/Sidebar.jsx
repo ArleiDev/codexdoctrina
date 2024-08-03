@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { FaHome, FaCode, FaServer, FaCloud, FaSignOutAlt, FaBars, FaArrowLeft } from 'react-icons/fa';
 import { BsServer } from "react-icons/bs";
+import { Link } from 'react-router-dom';
+import { IoCodeSlashSharp } from "react-icons/io5";
+import { FaMobileScreen } from "react-icons/fa6";
+
+
 import { auth } from '../services/firebaseConfig';
 
 const handleLogout = async () => {
@@ -20,7 +25,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={`h-screen bg-orange-900 text-white flex flex-col transition-width duration-300 ${isExpanded ? 'w-64' : 'w-16 items-center '}`}>
+    <div className={`max-h-screen bg-orange-900 text-white flex flex-col transition-width duration-300 ${isExpanded ? 'w-64' : 'w-16 items-center '}`}>
       {/* Logo */}
       <div className={`p-4 flex items-center justify-center bg-orange-800 transition-all duration-300 ${isExpanded ? 'h-24' : 'h-16 items-center'}`}>
         {isExpanded ? (
@@ -41,22 +46,24 @@ const Sidebar = () => {
       {/* Menu Items */}
       <nav className="flex-1 mt-6 ">
         <ul>
-          <li className="flex items-center p-4 hover:bg-orange-700 cursor-pointer">
+          <Link to='/Home'><li className=" transition all flex items-center p-4 hover:bg-orange-700 cursor-pointer">
             <FaHome className="mr-3" />
+            {isExpanded && <span>Home</span>}
+          </li></Link>
+          <Link to='/cursos/frontend'><li className="flex items-center p-4 hover:bg-orange-700 cursor-pointer">
+            <IoCodeSlashSharp className="mr-3" />
             {isExpanded && <span>Front End</span>}
-          </li>
-          <li className="flex items-center p-4 hover:bg-orange-700 cursor-pointer">
+          </li></Link>
+          <Link to='/cursos/backend'><li className="flex items-center p-4 hover:bg-orange-700 cursor-pointer">
             <BsServer className="mr-3" />
             {isExpanded && <span>Back End</span>}
-          </li>
+          </li></Link>
+          <Link to='/cursos/mobile'>
           <li className="flex items-center p-4 hover:bg-orange-700 cursor-pointer">
-            <FaServer className="mr-3" />
-            {isExpanded && <span>DevOps</span>}
-          </li>
-          <li className="flex items-center p-4 hover:bg-orange-700 cursor-pointer">
-            <FaCloud className="mr-3" />
-            {isExpanded && <span>Cloud Computing</span>}
-          </li>
+            <FaMobileScreen  className="mr-3" />
+            {isExpanded && <span>Mobile</span>}
+          </li></Link>
+          
         </ul>
       </nav>
 
@@ -69,7 +76,10 @@ const Sidebar = () => {
           <FaSignOutAlt className="mr-3" />
           {isExpanded && <span>Logout</span>}
         </button>
+      
       </div>
+      {isExpanded && <p className='text-orange-400 px-10'>By @Arleijunioo</p>}
+     
     </div>
   );
 };

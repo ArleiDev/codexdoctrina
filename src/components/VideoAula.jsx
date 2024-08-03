@@ -5,15 +5,15 @@ import Sidebar from './Sidebar';
 
 const VideoAula = () => {
     const { videoId } = useParams();
-    const videoUrl = `https://www.youtube.com/embed/${videoId}`;
+    const videoUrl = `https://www.youtube.com/embed/videoseries?si=${videoId}`;
 
     return (
         <div className="flex h-screen">
             <Sidebar className="w-64 bg-orange-600 text-white" />
             <div className="flex-1 flex justify-center items-center p-4">
-                <div className="w-full items-center flex justify-center ">
+                <div className="w-full items-center flex justify-center  ">
                     <iframe
-                        className="w-[1500px] h-[800px] rounded-lg shadow-2xl "
+                        className="w-5/6 h-screen py-12 shadow-2xl"
                         src={videoUrl}
                         title="Video Aula"
                         frameBorder="0"

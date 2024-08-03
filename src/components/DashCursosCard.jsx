@@ -2,9 +2,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const DashCursosCard = ({ videoId, videoTitle }) => {
+const DashCursosCard = ({ videoId, videoTitle, thumbnailUrl }) => {
     const navigate = useNavigate();
-    const thumbnailUrl = `https://i.postimg.cc/Qx1XXs5K/image.png`;
+    
+    const thumbnail = thumbnailUrl;
 
     const handleClick = () => {
         navigate(`/video-aula/${videoId}`);
@@ -12,12 +13,12 @@ const DashCursosCard = ({ videoId, videoTitle }) => {
 
     return (
         <div
-            className="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer"
+            className="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-all"
             onClick={handleClick}
         >
             <img
                 className="w-full h-auto rounded-lg"
-                src={thumbnailUrl}
+                src={thumbnail}
                 alt={videoTitle}
             />
             <div className="p-4">

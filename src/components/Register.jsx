@@ -1,7 +1,7 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from 'react';
 import {} from '../services/firebaseConfig'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 function Register() {
@@ -18,10 +18,10 @@ function Register() {
     createUserWithEmailAndPassword(auth,  email, password).then((UserCredential) => {
       // Signed in
       const user = UserCredential.user;
-      setmensagem('Usuario cadastrado!')
+      alert('Usuario cadastrado!')
       navigate("/login",{replace:true})
     }).catch((error) => {
-      setmensagem('Ocorreu um Erro tente novamente!')
+      alert('Ocorreu um Erro tente novamente!')
     })
      
   
@@ -94,9 +94,10 @@ function Register() {
               onClick={RegisterUser}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
             >
-              Entrar
+              Registrar-se
             </button>
-            
+            <Link to={'/login'}><h1 className='text-orange-500 py-3'>Já Registrado? Faça Login clicando aqui!</h1></Link>
+       
           </form>
         </div>
       </div>
