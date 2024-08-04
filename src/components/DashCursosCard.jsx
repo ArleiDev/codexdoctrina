@@ -21,7 +21,7 @@ const DashCursosCard = ({ videoId, videoTitle, thumbnailUrl }) => {
                 src={thumbnail}
                 alt={videoTitle}
             />
-            <div className="p-4">
+            <div className="p-2">
                 <h3 className="text-lg font-bold">{videoTitle}</h3>
             </div>
         </div>

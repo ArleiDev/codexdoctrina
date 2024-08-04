@@ -25,7 +25,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={`max-h-screen bg-orange-900 text-white flex flex-col transition-width duration-300 ${isExpanded ? 'w-64' : 'w-16 items-center '}`}>
+    <div className={`h-screen bg-orange-900 text-white flex flex-col transition-width duration-300 ${isExpanded ? 'w-64' : 'w-16 items-center '}`}>
       {/* Logo */}
       <div className={`p-4 flex items-center justify-center bg-orange-800 transition-all duration-300 ${isExpanded ? 'h-24' : 'h-16 items-center'}`}>
         {isExpanded ? (
